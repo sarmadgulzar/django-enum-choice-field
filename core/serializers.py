@@ -1,8 +1,8 @@
-from rest_framework.fields import ChoiceField
 from rest_framework.serializers import Serializer
 
 from core.enums import Color
+from core.fields import EnumChoiceField  # new line
 
 
 class ColorSerializer(Serializer):
-    color = ChoiceField(choices=Color._member_names_)
+    color = EnumChoiceField(enum=Color)  # updated line

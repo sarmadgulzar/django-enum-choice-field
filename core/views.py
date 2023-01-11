@@ -12,7 +12,7 @@ class Color2RGBAPIView(APIView):
     def post(self, request: Request) -> Response:
         serializer = ColorSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        color = Color[serializer.validated_data["color"]]
+        color = serializer.validated_data["color"]
         return Response({"rgb": self.get_rgb(color)})
 
     def get_rgb(
